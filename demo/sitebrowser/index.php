@@ -3,11 +3,11 @@ require_once(dirname(__FILE__) . '/class.db.php');
 require_once(dirname(__FILE__) . '/class.tree.php');
 $user    = "root";
 $pass    = "";
+$host     = "127.0.0.1";
 $schema  = "test";
-$url     = "127.0.0.1";
 $port    = "3306";
 if(isset($_GET['operation'])) {
-	$fs = new tree(db::get('mysqli://'.$user.':'.$pass.'@'.$host.'/'.$schema), array('structure_table' => 'tree_struct', 'data_table' => 'tree_data', 'data' => array('nm')));
+	$fs = new tree(db::get('mysqli://'.$user.':'.$pass.'@'.$host.'/'.$schema), array('port'=>$port, 'structure_table' => 'tree_struct', 'data_table' => 'tree_data', 'data' => array('nm')));
 	try {
 		$rslt = null;
 		switch($_GET['operation']) {
